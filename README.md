@@ -1,2 +1,3 @@
 # Uzduotys
-OOP uzduotys
+0.2 versija: 
+Viskas veikia is esmes taip pat, tik buvo pridetos kelios papildomos funkcijos. nuskaityti_is_failo uskaitomas duomenu failas i kintamaji rezultatai, tada nuskaitoma pirma eilute is to kintamojo. Tada yra sutvarkoma tai, kad butu po viena tarpa tarp visu irasu. Tada visa eilute per funkcija split_string yra isskaidoma i atskirus zodzius ir tie zodziai irasomi i vektoriu. Pirmas ir antras zodziai bus vardas ir pavarde, paskutinis zodis bus egzamino rezultatas, o like zodziai bus pazymiai. Taip per cikla priskiriami visi zodziai atitinkamai duomenu strukturoje studentas. Tada viskas suskaiciuojama ir isspausdinamas rezultatas.
