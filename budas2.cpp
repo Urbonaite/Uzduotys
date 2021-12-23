@@ -7,7 +7,7 @@
 using namespace std;
 struct duomenys {
     string vardas, pavarde;
-    int paz[10] = {0};
+    int paz[4] = {0};
     float egzaminas;
     float vidurkis = 0;
     float mediana = 0;
@@ -31,13 +31,13 @@ void print_result(duomenys studentas[], int num_of_std, int budas)
 }
 
 
-double gauti_mediana(int pazymiai[10]){
-  int size = sizeof(pazymiai[10]);
+double gauti_mediana(int pazymiai[4]){
+  int size = sizeof(pazymiai[4]);
   if (size == 0){
     return 0;
   }
   else{
-    sort(pazymiai, pazymiai + (int)sizeof(pazymiai[10]), greater<int>());
+    sort(pazymiai, pazymiai + (int)sizeof(pazymiai[4]), greater<int>());
     if (size % 2 == 0){
       return ((float)pazymiai[size / 2 - 1] + (float)pazymiai[size / 2]) / 2;
     }
@@ -51,16 +51,15 @@ double gauti_mediana(int pazymiai[10]){
 void count_from_input(duomenys studentas[], int i)
 {
     int temp;
-    int pazymiu_sk = 10;
+    int pazymiu_sk = 4;
+    int pazymio_vieta = 0;
     cout << "Iveskite studento egzamino rezultata: \n";
     cin >> studentas[i].egzaminas;
     if (studentas[i].egzaminas < 0 || studentas[i].egzaminas > 10){
         cout << "Ivestas netinkamas pazymys \n";
         exit (EXIT_FAILURE);
     }
-    cout << "Iveskite studento pazymius, norint baigti iveskite pazymi mazesni uz 1: \n";
-    temp = 1;
-    int pazymio_vieta = 0;
+    cout << "Iveskite 4 studento pazymius \n";
     while (pazymio_vieta < pazymiu_sk) {
         cin >> temp;
         temp = int(temp);
@@ -72,7 +71,6 @@ void count_from_input(duomenys studentas[], int i)
         pazymio_vieta++;
     }
     studentas[i].vidurkis = accumulate(studentas[i].paz, studentas[i].paz+pazymiu_sk, 0); 
-    //studentas[i].vidurkis = accumulate(studentas[i].paz.begin(),studentas[i].paz.end(),0.0);
     studentas[i].vidurkis = (float)studentas[i].vidurkis / (float)pazymiu_sk;
     studentas[i].vidurkis = (float)studentas[i].vidurkis * 0.4 + 0.6 * (float)studentas[i].egzaminas;
     studentas[i].mediana = gauti_mediana(studentas[i].paz);
@@ -80,7 +78,6 @@ void count_from_input(duomenys studentas[], int i)
 }
 
 int ats_paz(){
-    //srand(time(NULL));
     return rand() % 10 + 1;
 }
 
@@ -128,7 +125,7 @@ int main(){
     else{
         for (int i = 0; i < num_of_std; i++){
             add_student(studentas, i);
-            generuoti(studentas, i, 10);
+            generuoti(studentas, i, 4);
         }
     }
     cout << "Iveskite 1, jei norite vidurkio, kita skaiciu (simboli), jei norite medianos \n";
