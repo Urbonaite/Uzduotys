@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -83,7 +84,6 @@ void count_from_input(duomenys studentas[], int i)
 }
 
 int ats_paz(){
-    //srand(time(NULL));
     return rand() % 10 + 1;
 }
 
@@ -129,15 +129,6 @@ void nuskaityti_is_failo(duomenys studentas[]){
     SplitString(pavadinimai, zodziai);
     zodziai = {};
     while (getline(rezultatai, eilute)){
-    //     eilute = regex_replace(eilute, regex("[' ']{2,}"), " ");
-    //     SplitString(eilute, zodziai);
-    //     for (int i = 2; i < zodziai.size(); i++) {
-    //         irasas = zodziai.at(i);
-    //         cout << "\n";
-    //         cout << stoi(irasas) << "\n";
-    //     }
-    //     zodziai = {};
-    // }
         eilute = regex_replace(eilute, regex("[' ']{2,}"), " ");
         SplitString(eilute, zodziai);
         studentas[stud].vardas = zodziai.at(0);
@@ -156,11 +147,6 @@ void nuskaityti_is_failo(duomenys studentas[]){
         zodziai = {};
         stud++;
     }
-    // }
-    // for (int i = 2; i < zodziai.size()-1; i++) {
-    //     cout << "\n";
-    //     cout << zodziai.at(i) << ' ';
-    // }
 }
  
 
@@ -177,12 +163,12 @@ void add_student(duomenys studentas[], int i){
 
 
 int main(){
-    int num_of_std; int budas; string temp; duomenys studentas[11000];
+    int budas; duomenys studentas[11000];
     nuskaityti_is_failo(studentas);
     cout << "Iveskite 1, jei norite vidurkio, kita skaiciu (simboli), jei norite medianos \n";
     cin >> budas;
     budas = int(budas);
-    print_result(studentas, 100, budas);
+    print_result(studentas, 10000, budas);
     return 0;
 }
 
